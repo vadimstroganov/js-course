@@ -75,8 +75,8 @@ function reduce(array, fn, initialValue) {
         currentValue = array[counter];
 
         if (counter >= i) {
-            result[i] = fn(previousValue, currentValue, counter, array);
-            previousValue = result[i];
+            result = fn(previousValue, currentValue, counter, array);
+            previousValue = result;
         }
 
         counter++;
