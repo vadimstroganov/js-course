@@ -1,9 +1,9 @@
 function calculator(firstNumber) {
-    
+
     function sum() {
         var sum_of_args = 0;
 
-        for(i = 0; i < arguments.length; i++) {
+        for(var i = 0; i < arguments.length; i++) {
             sum_of_args += arguments[i];
         }
 
@@ -20,61 +20,42 @@ function calculator(firstNumber) {
         return firstNumber - sum_of_args;
     }
 
-    function div() {
-        var counter = 0;
+    function div(){
+            var sumRes = firstNumber;
 
-        var result = div_result(firstNumber, arguments, counter, []);
+            for (var i = 0; i < arguments.length; i++){
 
-        function div_result(result, arr, counter, results) {
-            try {
-                if (counter < arr.length) {
-                    if (arr[counter] != 0) {
-                        var new_result = result/arr[counter];
-                        results.push(new_result);
-                        div_result(new_result, arr, counter + 1, results);
-                    } else {
-                        throw new Error('Нельзя делить на 0!')
-                    }
+                if (!arguments[i]) {
+                    throw new Error('На ноль делить нельзя!');
                 }
-            } catch(e) {
-                console.log(e.message);
+
+                sumRes /= arguments[i];
             }
 
-            if (results.length == 1) {
-                return results;
-            } else {
-                results.shift();
-            }
-        }
-
-        return result;
+            return sumRes;
     }
 
-    function mul() {
-        var counter = 0;
+    function mul(){
+        sumRes = firstNumber;
 
-        var result = div_result(firstNumber, arguments, counter, []);
-
-        function div_result(result, arr, counter, results) {
-            if (counter < arr.length) {
-                if (arr[counter] != 0) {
-                    var new_result = result * arr[counter];
-                    results.push(new_result);
-                    div_result(new_result, arr, counter + 1, results);
-                } else {
-                    throw new Error('Нельзя делить на 0!')
-                }
-            }
-
-            if (results.length == 1) {
-                return results;
-            } else {
-                results.shift();
-            }
+        for (var i = 0; i < arguments.length; i++){
+            sumRes *= arguments[i];
         }
 
-        return result;
+        return sumRes;
     }
-    
+
     return { sum: sum, dif: dif, div: div, mul: mul };
 }
+
+
+var myCalculator = calculator(100);
+
+
+var allNumbers = [1, 2, 4, 5, 6, 7, 8],
+
+    someNumbers = [1, 2, 'привет', 4, 5, 'loftschool', 6, 7, 8],
+
+    noNumbers = ['это', 'массив', 'без', 'чисел'];
+
+console.log(myCalculator.div(2, 2)); //вернет 25
