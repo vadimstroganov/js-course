@@ -1,0 +1,59 @@
+@import "https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css";
+
+body {
+    background: #ffffff;
+}
+
+.container {
+    display: block;
+    width: 460px;
+    margin: 100px auto 0;
+}
+
+.accordion {}
+.accordion-item {
+    background: #e7e7e7;
+    border-radius: 25px;
+    margin: 5px 0 0 0;
+}
+.accordion-item:first-child {
+    margin: 0;
+}
+
+.accordion-item-title {
+    border-radius: 25px;
+    padding: 15px 20px;
+    color: #ffffff;
+    cursor: pointer;
+}
+.accordion-item:nth-child(even) .accordion-item-title {
+    background: #e7e7e7;
+    color: #4f4f4f;
+}
+.accordion-item:nth-child(odd) .accordion-item-title {
+    background: #696666;
+}
+.accordion-item.active .accordion-item-title {
+    background: #ff8663;
+}
+
+.accordion-item-body {
+    padding: 0;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: 0.6s ease-in-out;
+}
+.accordion-item.active .accordion-item-body {
+    padding: 15px 20px;
+    opacity: 1;
+    max-height: 500px;
+}
+.accordion-item-body p {
+    margin: 15px 0 0 0;
+    color: #636363;
+}
+.accordion-item-body p:first-child {
+    margin: 0;
+}
+
