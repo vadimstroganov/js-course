@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<h3>Create new cookie:</h3>
+<form id="create_cookie_form">
+  <input type="text" id="cookie_name"   placeholder="Enter cookie name...">
+  <input type="text" id="cookie_value"  placeholder="Enter cookie value...">
+  <input type="text" id="cookie_expiry" placeholder="Enter cookie expiry...">
+  <button id="create_cookie" type="submit">Create</button>
+</form>
+
+<h3>List of cookies:</h3>
+<table id="cookie_table" border="1">
+  <thead>
+    <th>Cookie name</th>
+    <th>Cookie value</th>
+    <th>Cookie expiry</th>
+    <th>Actions</th>
+  </thead>
+  <tbody></tbody>
+</table>
+
+<script src="js/index.js"></script>
+</body>
+</html>
