@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/index.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
+</head>
+<body>
+
+<input type="text" id="city_filter">
+<div id="container"></div>
+
+<script src="js/index.js"></script>
+
+<script id="cities_list" type="text/x-handlebars-template">
+  {{#each cities}}
+    <div class="city-item">{{name}}</div>
+  {{/each}}
+</script>
+
+</body>
+</html>

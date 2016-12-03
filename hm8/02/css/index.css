@@ -1,0 +1,25 @@
+.col-xs-12 {
+    padding: 0;
+}
+
+#container {
+    width: 600px;
+    margin: 0 auto;
+}
+
+#container h1 {
+    text-align: center;
+    margin: 15px 0;
+}
+
+.col-xs-12 {
+    background: #e7e7e7;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+
+.friend-item .friend-avatar {
+    border-radius: 50%;
+}
