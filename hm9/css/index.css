@@ -1,0 +1,117 @@
+* {
+  outline: none;
+}
+
+[draggable] {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.p0 {
+  padding: 0;
+}
+.m0 {
+  margin: 0;
+}
+
+.hide {
+  display: none;
+}
+
+body {
+  background: #a09fa1;
+}
+
+#container {
+  width: 700px;
+  margin: 20px auto 0;
+}
+
+.app {
+  border-radius: 10px;
+  box-shadow: #777 0 0 10px;
+}
+
+.app .header {
+  background: #f48572;
+  border-radius: 10px 10px 0 0;
+}
+.app .header .title {
+  font-size: 18px;
+  color: #ffffff;
+  padding: 10px 15px;
+}
+
+.app .filters {
+  background: #f2f0f2;
+  padding: 10px 0;
+  height: 45px;
+}
+.app .filters input {
+  display: inline-block;
+  border: none;
+  border-radius: 10px;
+  padding: 3px 5px;
+  width: 100%;
+}
+
+.app .content {
+  background: #ffffff;
+}
+.app .content #friends_nosort,
+.app .content #friends_sort {
+  width: 100%;
+  height: 500px;
+  background: #ffffff;
+  overflow-y: auto;
+}
+.app .content #friends_nosort {
+  border-right: 1px solid #f4f3f4;
+}
+.app .content .title {
+  background: #ffffff;
+  padding: 8px 5px 2px 15px;
+  font-weight: bold;
+}
+.app .content .item {
+  position: relative;
+  height: 60px;
+  padding: 5px 0;
+  margin: 0 15px;
+  border-bottom: 1px solid #f4f3f4;
+}
+.app .content .item .avatar img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.app .content .item .fio {
+  font-weight: bold;
+  line-height: 3.3;
+}
+.app .content .item .transfer-btn {
+  position: absolute;
+  right: 17px; top: 15px;
+  font-size: 20px;
+  color: #c9c8c9;
+}
+.app .content .item .transfer-btn:hover {
+  color: #f48572;
+}
+
+.app .footer {
+  background: #f2f0f2;
+  text-align: right;
+  border-radius: 0 0 10px 10px;
+}
+.app .footer .save-btn {
+  display: inline-block;
+  background: #f48572;
+  padding: 5px;
+  margin: 8px 5px;
+  border-radius: 10px;
+  color: #ffffff;
+  text-decoration: none;
+}
