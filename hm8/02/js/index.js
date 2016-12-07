@@ -1,7 +1,7 @@
 let container = document.getElementById('container');
 let friends_list = document.getElementById('friends_list');
 
-function sortBdate(a, b) {
+function sortDatesByincrease(a, b, reverse) {
 
   if (a == undefined && b == undefined) {
     return 0;
@@ -15,12 +15,50 @@ function sortBdate(a, b) {
 
     let aDate = new Date(0, aMonth, aDay), bDate = new Date(0, bMonth, bDay);
 
-    console.log(`adate: ${aDate}`);
-    console.log(`bdate: ${bDate}`);
-
-    return (aDate < bDate) ? 1 : (aDate > bDate) ? -1 : 0;
+    if (aDate < bDate) {
+      return reverse ? -1 : 1
+    } else if (aDate > bDate) {
+      return reverse ? 1 : -1
+    } else {
+      return 0;
+    }
   }
 
+}
+
+function sortByClosest(users, currentDate) {
+  var before = [];
+  var after = [];
+  var undef = [];
+
+  // текущая дата
+  currentDate = new Date(0, currentDate.getMonth(), currentDate.getDate());
+
+  var max = users.length;
+  for(var i = 0; i < max; i++) {
+
+    if (users[i].bdate == undefined) {
+      undef.push(users[i]);
+    } else {
+      // формируем дату рождения пользователя в объект Date
+      let [day, month] = users[i].bdate.split('.');
+      let arrDate = new Date(0, month - 1, day);
+
+      // сравнивать даты будем в днях
+      let diff = (arrDate - currentDate) / (3600 * 24 * 1000);
+
+      if(diff > 0) {
+        before.push(users[i]);
+      } else {
+        after.push(users[i]);
+      }
+    }
+  }
+
+  before.sort((a, b) => sortDatesByincrease(a.bdate, b.bdate, true));
+  after.sort((a, b) => sortDatesByincrease(a.bdate, b.bdate, true));
+
+  return before.concat(after).concat(undef);
 }
 
 function setAge(array) {
@@ -41,8 +79,7 @@ function setAge(array) {
     }
     results.push(item);
   }
-
-  console.log(results);
+  
   return results;
 }
 
@@ -75,7 +112,9 @@ new Promise(function(resolve) {
       } else {
 
         let friends = setAge(response.response);
-        friends.sort((a, b) => sortBdate(a.bdate, b.bdate));
+        let currentDate = new Date();
+
+        friends = sortByClosest(friends, currentDate);
 
         let source = document.getElementById('friends_list_tmpl').innerHTML;
         let templateFn = Handlebars.compile(source);
