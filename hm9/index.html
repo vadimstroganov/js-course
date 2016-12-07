@@ -34,11 +34,11 @@
         <div class="row p0 m0">
           <div class="col-xs-6 p0">
             <div class="title">Ваши друзья</div>
-            <div id="friends_nosort"></div>
+            <div id="friends_nosort" class="drag-zone" ondragenter="dragEnter(event)" ondrop="dragDrop(event)" ondragover="dragOver(event)"></div>
           </div>
           <div class="col-xs-6 p0">
             <div class="title">Друзья в списке</div>
-            <div id="friends_sort"></div>
+            <div id="friends_sort" class="drag-zone" ondragenter="dragEnter(event)" ondrop="dragDrop(event)" ondragover="dragOver(event)"></div>
           </div>
         </div>
       </div>
@@ -53,7 +53,7 @@
 
 <script type="text/x-handlebars-template" id="friends_tmpl">
   {{#each friends}}
-    <div class="item" draggable="true" data-user-id="{{user_id}}">
+    <div class="item" draggable="true" ondragstart="dragStart(event)" data-user-id="{{user_id}}">
       <div class="col-xs-2 p0 avatar">
         <img src="{{photo_100}}">
       </div>

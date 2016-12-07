@@ -1,6 +1,27 @@
 let friends_nosort = document.getElementById('friends_nosort');
 let friends_sort   = document.getElementById('friends_sort');
 
+function dragStart(ev) {
+  ev.dataTransfer.effectAllowed='move';
+  ev.dataTransfer.setData("Text", ev.target.dataset.userId);
+  return true;
+}
+
+function dragEnter(ev) {
+  event.preventDefault();
+  return true;
+}
+function dragOver(ev) {
+  event.preventDefault();
+}
+
+function dragDrop(ev) {
+  var data = ev.dataTransfer.getData("Text");
+  ev.target.closest('.drag-zone').appendChild(document.querySelector(`[data-user-id='${data}']`));
+  ev.stopPropagation();
+  return false;
+}
+
 new Promise(function(resolve) {
   if (document.readyState === 'complete') {
     resolve();
@@ -41,8 +62,6 @@ new Promise(function(resolve) {
         let friend_ids = localStorage.getItem('friend_ids');
         if (friend_ids) {
           friend_ids = friend_ids.split(',');
-
-          var emulateClickEvent = new Event('click');
 
           for (item of friends_nosort.querySelectorAll('.item')) {
             if (friend_ids.includes(item.dataset.userId)) {
